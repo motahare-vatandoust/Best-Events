@@ -1,7 +1,11 @@
-import { useRef } from 'react';
+import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { fetchEvents } from "../../util/http";
 
 export default function FindEventSection() {
   const searchElement = useRef();
+
+ 
 
   function handleSubmit(event) {
     event.preventDefault();
