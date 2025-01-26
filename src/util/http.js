@@ -75,6 +75,7 @@ export async function fetchEvent({ id, signal }) {
   }
 
   const { event } = await response.json();
+  
   return event;
 }
 
