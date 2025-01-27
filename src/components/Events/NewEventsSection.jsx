@@ -4,11 +4,10 @@ import ErrorBlock from "../UI/ErrorBlock.jsx";
 import EventItem from "./EventItem.jsx";
 import { fetchEvents } from "../../util/http.js";
 
-
 export default function NewEventsSection() {
   const { data, isPending, isError, error } = useQuery({
-    queryKey: ["events-new"],
-    queryFn: fetchEvents,
+    queryKey: ["events-new", { max: 3 }],
+    queryFn: ({ signal, queryKey }) => fetchEvents({ signal, ...queryKey[1] }),
     staleTime: 5000, //default is zero
     // gcTime: 30000 //keep chached data
   });
